@@ -4,7 +4,7 @@
              x:Class="ContactsApp.Views.DelectContactPage">
 
     <VerticalStackLayout>
-        <Label Text="Welcome to Contacts Page"
+        <Label Text="Welcome to Contasssscts Page"
                FontSize="24"
                HorizontalOptions="Center"
               />

@@ -1,46 +1,42 @@
+using ContactsApp.Models;
+using Contact = ContactsApp.Models.Contact;
+using System.Collections.ObjectModel;
+
 namespace ContactsApp.Views
 {
     public partial class ContactsPage : ContentPage
     {
-        public ContactsPage()
-        {
-            InitializeComponent(); 
-            
-        List<Contact> contacts = new List<Contact>()
-        {
-          
-            new Contact { Name="Anesu", Email="anesushangwa@gmail.com"},
-             new Contact { Name="Anesu", Email="anesushangwa@gmail.co"},
-              new Contact { Name="Shangwa", Email="anesushangwa@gmail.co"}
-        };
+        private ObservableCollection<Contact> contacts = new();
 
-         listContacts.ItemsSource = contacts;
+        public ContactsPage() 
+        {
+            InitializeComponent();
+            LoadContacts();
         }
 
-        // private void btnEditContact_Clicked(object sender, EventArgs e)
-        // {
-        //     Shell.Current.GoToAsync(nameof(EditContactPage ));
-          
-        // }
-
-     private async void MyListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-{
-    if (listContacts.SelectedItem != null)
-    {
-        await Shell.Current.GoToAsync(nameof(EditContactPage));
-        
-    }
-}
-
-
-        public class Contact {
-            public required string Name {get; set;}
-              public required string Email {get; set;}
+        protected override void OnNavigatedTo(NavigatedToEventArgs args)
+        {
+            base.OnNavigatedTo(args);
+            LoadContacts();
         }
-        
+
+        private void LoadContacts()
+        {
+            contacts.Clear();
+            foreach (var contact in ContactRepo.GetContacts())
+            {
+                contacts.Add(contact);
+            }
+            listContacts.ItemsSource = contacts;
+        }
+
+        private async void MyListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (listContacts.SelectedItem != null)
+            {
+                await Shell.Current.GoToAsync($"{nameof(EditContactPage)}?Id={((Contact)listContacts.SelectedItem).Id}");
+                listContacts.SelectedItem = null; // Clear selection
+            }
+        }
     }
 }
-
-
-
-

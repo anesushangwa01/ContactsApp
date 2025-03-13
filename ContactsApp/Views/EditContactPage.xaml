@@ -3,14 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ContactsApp.Views.EditContactPage">
            
-    <VerticalStackLayout Spacing="5 ">
-        <Label Text="Welcome to add Page"
+    <VerticalStackLayout Spacing="10" Padding="20">
+        <Label Text="Edit Contact"
                FontSize="24"
                HorizontalOptions="Center"
-              />
-        <Button x:Name="BtnCancel" Text="Cancel" Clicked="BtnCancel_Clicked" />
+               Margin="0,0,0,20"/>
+
+        <Label Text="Name"/>
+        <Entry x:Name="NameEntry" Placeholder="Enter name"/>
+
+        <Label Text="Email"/>
+        <Entry x:Name="EmailEntry" Placeholder="Enter email"/>
+
+         <Label Text="Phone"/>
+        <Entry x:Name="PhoneEntry" Placeholder="Enter phone"/>
+
+
+         <Label Text="Address"/>
+        <Entry x:Name="AddressEntry" Placeholder="Enter address"/>
+
+
+         <Label Text="Status"/>
+        <Entry x:Name="StatusEntry" Placeholder="Friend or Family or Work or Other"/>
+
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" Margin="0,20,0,0">
+            <Button x:Name="BtnSave" Text="Save" Clicked="BtnSave_Clicked"/>
+            <Button x:Name="BtnCancel" Text="Cancel" Clicked="BtnCancel_Clicked"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
-    
 </ContentPage>
-
-

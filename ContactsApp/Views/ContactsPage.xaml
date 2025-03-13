@@ -3,34 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ContactsApp.Views.ContactsPage">
 
-    <!-- Your UI elements go here -->
-    <!-- <VerticalStackLayout Spacing="5">
-        <Label Text="Welcome to Contacts Page"
-               FontSize="24"
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
-        
-        <Button x:Name="btnEditContact"  Clicked="btnEditContact_Clicked" Text="edit contact" />
-        <Button  x:Name="btnAddContact" Clicked="btnAddContact_Clicked"  Text="add contact"/>
-
-    </VerticalStackLayout> -->
-
     <ListView 
         ItemSelected="MyListView_ItemSelected"
-        x:Name="listContacts" BackgroundColor="Transparent"
-        SeparatorColor="Black" 
-        RowHeight="50"
-       >
+        x:Name="listContacts" 
+        BackgroundColor="Transparent"
+        SeparatorColor="Gray" 
+        RowHeight="80"
+        SelectionMode="Single">
 
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Name}"
-                    Detail="{Binding Email}"></TextCell>
-                
+                <ViewCell>
+                    <Grid Padding="10" RowSpacing="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{Binding Name}" 
+                               FontSize="16" 
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding Status}" 
+                               Grid.Column="1" 
+                               TextColor="Gray"
+                               FontSize="14"/>
+
+                        <Label Grid.Row="1" 
+                               Text="{Binding Phone}" 
+                               TextColor="Gray"
+                               FontSize="14"/>
+
+                        <Label Grid.Row="2" 
+                               Text="{Binding Email}" 
+                               TextColor="Gray"
+                               FontSize="14"/>
+                    </Grid>
+                </ViewCell>
             </DataTemplate>
-
         </ListView.ItemTemplate>
-
     </ListView>
-
 </ContentPage>
