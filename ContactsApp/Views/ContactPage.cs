@@ -35,7 +35,7 @@ namespace ContactsApp.Views
             if (listContacts.SelectedItem != null)
             {
                 await Shell.Current.GoToAsync($"{nameof(EditContactPage)}?Id={((Contact)listContacts.SelectedItem).Id}");
-                listContacts.SelectedItem = null; // Clear selection
+                listContacts.SelectedItem = null;
             }
         }
     }
