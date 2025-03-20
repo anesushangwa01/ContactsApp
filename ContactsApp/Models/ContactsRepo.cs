@@ -57,5 +57,12 @@
                 existingContact.Status = updatedContact.Status;
             }
         }
+
+        
+        public static void AddContact(Contact contact)
+        {
+            contact.Id = contacts.Max(x => x.Id) + 1;
+            contacts.Add(contact);
+        }
     }
 }

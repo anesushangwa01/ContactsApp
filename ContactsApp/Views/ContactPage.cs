@@ -38,5 +38,9 @@ namespace ContactsApp.Views
                 listContacts.SelectedItem = null;
             }
         }
+        private async void Add_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(AddContacts));
+        }
     }
 }

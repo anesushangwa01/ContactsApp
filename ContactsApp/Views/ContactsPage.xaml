@@ -2,49 +2,65 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ContactsApp.Views.ContactsPage">
+    
+    <StackLayout>
+        <!-- ListView for displaying contacts -->
+        <ListView 
+            ItemSelected="MyListView_ItemSelected"
+            x:Name="listContacts" 
+            BackgroundColor="Transparent"
+            SeparatorColor="Gray" 
+            RowHeight="80"
+            SelectionMode="Single">
 
-    <ListView 
-        ItemSelected="MyListView_ItemSelected"
-        x:Name="listContacts" 
-        BackgroundColor="Transparent"
-        SeparatorColor="Gray" 
-        RowHeight="80"
-        SelectionMode="Single">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10" RowSpacing="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid Padding="10" RowSpacing="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" 
+                                   FontSize="16" 
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding Status}" 
+                                   Grid.Column="1" 
+                                   TextColor="Gray"
+                                   FontSize="14"/>
+                            <Label Grid.Row="1" 
+                                   Text="{Binding Phone}" 
+                                   TextColor="Gray"
+                                   FontSize="14"/>
+                            <Label Grid.Row="2" 
+                                   Text="{Binding Email}" 
+                                   TextColor="Gray"
+                                   FontSize="14"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-                        <Label Text="{Binding Name}" 
-                               FontSize="16" 
-                               FontAttributes="Bold"/>
-                        <Label Text="{Binding Status}" 
-                               Grid.Column="1" 
-                               TextColor="Gray"
-                               FontSize="14"/>
+        <!-- Add Button (outside the ListView) -->
+        <Button 
+            Text="Add Contact"
+            Clicked="Add_Clicked"
+           
+            TextColor="White"
+            FontSize="16"
+            FontAttributes="Bold"
+       
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+           />
 
-                        <Label Grid.Row="1" 
-                               Text="{Binding Phone}" 
-                               TextColor="Gray"
-                               FontSize="14"/>
+    </StackLayout>
 
-                        <Label Grid.Row="2" 
-                               Text="{Binding Email}" 
-                               TextColor="Gray"
-                               FontSize="14"/>
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
 </ContentPage>
